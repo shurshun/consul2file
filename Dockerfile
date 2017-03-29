@@ -5,7 +5,7 @@ LABEL maintainer "4lifenet@gmail.com"
 
 ENV CONSUL_ADDR=localhost:8500
 ENV KEY_PREFIX=storage
-ENV OUT_DIR=/tmp
+ENV STORE_DIR=/tmp
 
 RUN \
     CONSUL_VERSION=$(curl -s https://api.github.com/repos/hashicorp/consul/tags | jq -r ".[0] .name" | tr -d v) \
