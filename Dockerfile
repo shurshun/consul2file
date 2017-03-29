@@ -17,4 +17,6 @@ RUN \
     CONSUL2FILE_VERSION=$(curl -s https://api.github.com/repos/shurshun/consul2file/tags | jq -r ".[0] .name") \
     && curl -fSlL https://github.com/shurshun/consul2file/releases/download/${CONSUL2FILE_VERSION}/consul2file_${CONSUL2FILE_VERSION}_linux_amd64.tar.gz | tar -C /bin -zx
 
-CMD ["consul", "watch", "-http-addr=", $CONSUL_ADDR, "-type", "keyprefix", "-prefix", $KEY_PREFIX, "/bin/consul2file", "-p", $KEY_PREFIX, "-o", $OUT_DIR]
+COPY bin/ /bin/
+
+CMD ["entrypoint.sh"]
